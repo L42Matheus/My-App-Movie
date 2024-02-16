@@ -1,20 +1,30 @@
 package org.example.popular;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Person {
 
+    @Id
+    private Long id;
     private int gender;
-    private int id;
     private String name;
-    private String original_name;
+    @JsonProperty("original_name")
+    private String originalName;
     private double popularity;
-    private String profile_path;
+    @JsonProperty("profile_path")
+    private String profilePath;
 
+    public Person() {
+    }
 
     public int getGender() {
         return gender;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -22,15 +32,15 @@ public class Person {
         return name;
     }
 
-    public String getOriginal_name() {
-        return original_name;
+    public String getOriginaName() {
+        return originalName;
     }
 
     public double getPopularity() {
         return popularity;
     }
 
-    public String getProfile_path() {
-        return profile_path;
+    public String getProfilePath() {
+        return profilePath;
     }
 }

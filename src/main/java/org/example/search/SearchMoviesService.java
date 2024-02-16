@@ -19,7 +19,7 @@ public class SearchMoviesService {
 
 
     public List<KnownFor> getSearchMovies(String query){
-        String url = "https://api.themoviedb.org/3/search/movie?query=" + query + "&api_key=" + tmdbApiKey;
+        String url = "https://api.themoviedb.org/3/search/movie?query=" + query + "&api_key=" + tmdbApiKey +"&language=pt-BR";
         ResponseEntity<SearchMoviesResponse> response = restTemplate.getForEntity(url, SearchMoviesResponse.class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
@@ -28,6 +28,4 @@ public class SearchMoviesService {
             return  null;
         }
     }
-
-
 }

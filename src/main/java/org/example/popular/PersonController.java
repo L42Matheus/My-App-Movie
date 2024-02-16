@@ -18,16 +18,10 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping("/popular")
-    public ResponseEntity<List<Person>> getPopularPersons(@RequestParam int page,
-                                                         @RequestParam String language){
+    public ResponseEntity<List<Person>> getPopularPersons(@RequestParam(required = false, defaultValue = "1") int page,
+                                                          @RequestParam(required = false, defaultValue = "en-EN") String language){
 
-        List<Person> popularPersons = personService.getPopularPersons(page, language);
-
-        if (popularPersons != null && !popularPersons.isEmpty()) {
-            return ResponseEntity.ok(popularPersons);
-        }else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(personService.getPopularPersons(page, language));
     }
 
 }
